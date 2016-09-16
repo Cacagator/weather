@@ -1,9 +1,14 @@
 #! /bin/bash
 
-yeterday=date -d yesterday
+yesterday=`date -d yesterday '+%Y/%m/%d'`
 
-curl "https://www.wunderground.com/history/airport/GNV/2016/09/06/DailyHistory.heml?&format=1" >gnv.txt
+#website="https://www.wunderground.com/history/airport/GNV/2016/09/06/DailyHistory.heml?&format=1"
+
+#echo "https://www.wunderground.com/history/airport/GNV/$yesterday/DailyHistory.heml?&format=1"|curl - >gnv.txt
+
+curl `echo "https://www.wunderground.com/history/airport/GNV/$yesterday/DailyHistory.heml?&format=1"` >gnv.txt
 
 maxTem=`cut -f2 -d ',' gnv.txt|sort -n|tail -1`
 
-echo the Max Temp is $maxTem
+echo Yesterday is $yesterday, and the Max Temp is $maxTem degrees Fahrenheit!
+
