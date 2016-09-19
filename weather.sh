@@ -14,9 +14,9 @@ Day=`date '+%Y/%m/%d'|cut -f3 -d '/'`
 
 #yesterday=$Day - 1
 
-#echo "https://www.wunderground.com/history/airport/GNV/$yesterday/DailyHistory.heml?&format=1"|curl - >gnv.txt
+#echo "https://www.wunderground.com/history/airport/GNV/$yesterday/DailyHistory.heml?&format=1"|curl - >$code.txt
 
-curl -s `echo "https://www.wunderground.com/history/airport/$code/$Year/$Month/$Day/DailyHistory.heml?&format=1"` >gnv.txt
+curl -s `echo "https://www.wunderground.com/history/airport/$code/$Year/$Month/$Day/DailyHistory.heml?&format=1"` >$code.txt
 
 maxTem=`cut -f2 -d ',' gnv.txt|sort -n|tail -1`
 
